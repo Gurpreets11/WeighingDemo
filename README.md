@@ -1,6 +1,9 @@
- # MVVM Demo App 🧱📱
+ # Weighing Demo App 🧱📱
+---
 
-A simple Android application to connect with Weighing machine. AFter connected, read weight data and display it on screen.
+
+A simple Android application to connect with Weighing machine. After connected, read weight data and display it on screen.
+
 ---
 
  
@@ -10,8 +13,9 @@ A simple Android application to connect with Weighing machine. AFter connected, 
 ### 1. Clone the Repository
 
 ```bash
-git clone git@github.com:your-username/mvvm-demo-app.git
-cd mvvm-demo-app
+git clone git@github.com:Gurpreets11/WeighingDemo.git
+
+cd WeighingDemo
 
 
 
