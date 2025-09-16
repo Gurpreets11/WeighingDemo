@@ -78,7 +78,19 @@ public class WeightActivity extends AppCompatActivity {
             int selectedPosition = deviceSpinner.getSelectedItemPosition();
             if (selectedPosition >= 0 && selectedPosition < deviceList.size()) {
                 BluetoothDevice device = deviceList.get(selectedPosition);
-                bluetoothHelper.connectToDevice(device);
+                //bluetoothHelper.connectToDevice(device);
+
+
+                if (device.getName() != null && (
+                        device.getName().startsWith("ESSAE WS") ||
+                                device.getName().toUpperCase().contains("ESSAE WS"))) {
+                    // A bit more flexible but with controlled scope
+                    Log.e("TAG","NAME MATCH ::"+ device.getName());
+                    bluetoothHelper.connectToDevice(device);
+                } else {
+                    Toast.makeText(WeightActivity.this, "Select weighing machine to connect: Ex. ESSAE WS", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
     }
@@ -100,15 +112,6 @@ public class WeightActivity extends AppCompatActivity {
             deviceNames.add(device.getName() + "\n" + device.getAddress());
             Log.e("TAG","NAME ::"+ device.getName());
             Log.e("TAG","Alias ::"+ device.getAlias());
-
-            if (device.getName() != null && (
-                    device.getName().startsWith("ESSAE WS") ||
-                            device.getName().toUpperCase().contains("ESSAE WS"))) {
-                // A bit more flexible but with controlled scope
-                Log.e("TAG","NAME MATCH ::"+ device.getName());
-                bluetoothHelper.connectToDevice(device);
-            }
-
         }
 
         deviceAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, deviceNames);
